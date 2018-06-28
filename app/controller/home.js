@@ -11,6 +11,16 @@ exports.get = async (req, res, next) => {
   }
 }
 
+exports.getAdmin = async (req, res, next) => {
+  try {
+    const allMessage = await Message.find()
+    res.json(allMessage)
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+
 exports.post = async (req, res, next) => {
   try {
     const { body } = req

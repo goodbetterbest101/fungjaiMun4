@@ -1,11 +1,11 @@
 const { checkSchema } = require('express-validator/check')
 
 exports.validatorMessage = checkSchema({
-  message: {
-    in: ['body'],
-    errorMessage: 'Invalid message parameters',
-    isString: true
-  }
+  // message: {
+  //   in: ['body'],
+  //   errorMessage: 'Invalid message parameters',
+  //   isString: true
+  // }
 })
 
 exports.validatorError = (req, res, next) => {

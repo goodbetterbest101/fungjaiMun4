@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+
+  core-data:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    command: bash -c "mongod | mongorestore /backup | wait"
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+     - ./backup-mongo:/backup
+
+  redis:
+    image: redis
+    restart: unless-stopped

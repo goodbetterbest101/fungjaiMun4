@@ -6,7 +6,7 @@ const { resolve } = require('path')
 const mongoose = require('mongoose')
 const models = join(__dirname, 'app/models')
 const app = express()
-const DB = 'mongodb://0.0.0.0:27017/fungjaiMun'
+const DB = 'mongodb://0.0.0.0:27017/fungjai_mun'
 const bodyParser = require('body-parser')
 
 mongoose.Promise = global.Promise

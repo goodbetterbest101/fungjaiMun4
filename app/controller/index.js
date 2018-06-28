@@ -11,9 +11,12 @@ module.exports = (app) => {
      home.get)
 
   router.post('/home',
-     validator.validatorMessage,
-     validator.validatorError,
+     // validator.validatorMessage,
+     // validator.validatorError,
      home.post)
+
+  router.get('/admin',
+     home.getAdmin)
 
   router.get('/', (req, res, next) => res.json({title: `Hello world`}))
   return router

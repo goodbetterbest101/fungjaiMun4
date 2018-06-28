@@ -1,6 +1,7 @@
-const express =  require('express')
 const { resolve } = require('path')
+const express =  require('express')
 const home = require(resolve('app/controller/home'))
+
 
 module.exports = (app) => {
   let router = express.Router()

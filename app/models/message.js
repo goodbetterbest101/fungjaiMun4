@@ -6,5 +6,4 @@ let MessageSchema = mongoose.Schema(
    }
 )
 
-let Message = mongoose.model('Message', MessageSchema)
-module.exports = Message
+mongoose.model('Message', MessageSchema)

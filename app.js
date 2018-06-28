@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const models = join(__dirname, 'app/models')
 const app = express()
 const DB = 'mongodb://0.0.0.0:27017/fungjaiMun'
+const bodyParser = require('body-parser')
 
 mongoose.Promise = global.Promise
 mongoose.connect(DB)
@@ -15,6 +16,12 @@ mongoose.connect(DB)
 fs.readdirSync(models)
    .filter(file => ~file.indexOf('.js'))
    .forEach(file => require(join(models, file)))
+
+// Config body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 // Controller
 const appRouter = require(resolve('app/controller'))

@@ -1,12 +1,23 @@
 const { resolve } = require('path')
 const mongoose = require('mongoose')
 const Message = mongoose.model('Message')
-// const Message = require(resolve('app/models/message'))
 
 exports.get = async (req, res, next) => {
   try {
-    console.log('asd')
-    res.send('asdasdasd')
+    res.send('Welcome to Fungjai Mun')
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+
+exports.post = async (req, res, next) => {
+  try {
+    const { body } = req
+    const message = await new Message({
+       ...body
+    }).save()
+    res.json(message)
   }
   catch (e) {
     console.log(e)

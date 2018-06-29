@@ -15,6 +15,7 @@ exports.getAdmin = async (req, res, next) => {
   try {
     const allMessage = await Message.find()
     res.json(allMessage)
+    // res.send('aaaaa')
   }
   catch (e) {
     console.log(e)

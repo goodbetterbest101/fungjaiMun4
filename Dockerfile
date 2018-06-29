@@ -3,7 +3,8 @@ FROM node:8.11.3-alpine
 ADD package.json /tmp/package.json
 
 RUN cd /tmp \
-    && npm install --production
+    && npm i npm@latest -g \
+    && npm install
 
 RUN mkdir -p /apps \
     && cp -a /tmp/node_modules /apps

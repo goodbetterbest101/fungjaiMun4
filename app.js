@@ -6,11 +6,19 @@ const { resolve } = require('path')
 const mongoose = require('mongoose')
 const models = join(__dirname, 'app/models')
 const app = express()
-const DB = 'mongodb://0.0.0.0:27017/fungjai_mun'
+const port = process.env.PORT || 3000
+const DB = 'mongodb://mongo:27017/fungjai_mun'
 const bodyParser = require('body-parser')
 
 mongoose.Promise = global.Promise
-mongoose.connect(DB)
+mongoose.connect(DB).then(
+   () => {
+     console.log('success')
+   },
+   err => {
+     console.log(`Error: ${err}`)
+   }
+)
 
 // Bootstrap models
 fs.readdirSync(models)
@@ -28,8 +36,8 @@ const appRouter = require(resolve('app/controller'))
 const APP_PATH =  '/'
 app.use(APP_PATH, appRouter(app))
 
-app.listen(3000,() => {
-  console.log('Port 3000!')
+app.listen(port,() => {
+  console.log(`Port ${port}!`)
 })
 
 module.exports = app

@@ -6,7 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-
     volumes:
          - .:/apps
 
@@ -16,7 +15,7 @@ services:
 
   mongo:
     image: mongo
-#    command: "bash -c \"mongod | mongorestore --drop /backup | wait | mongod\""
+#    command: bash -c "mongorestore --drop /backup | wait | mongod"
     restart: unless-stopped
     ports:
       - "27017:27017"

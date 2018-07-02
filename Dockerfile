@@ -13,6 +13,10 @@ WORKDIR /apps
 
 ADD . /apps
 
+ARG buildno=n/a
+
+ENV BUILD_NO=$buildno
+
 EXPOSE 3000
 
-CMD npm start app.js -i 0 --no-daemon
+CMD npm run $BUILD_NO

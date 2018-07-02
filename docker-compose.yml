@@ -1,4 +1,4 @@
-version: '2'
+version: '3.1'
 
 services:
 
@@ -6,21 +6,26 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-         - .:/apps
+      args:
+        buildno: 'docker'
 
+    volumes:
+      - .:/apps
     ports:
       - "3000:3000"
     restart: unless-stopped
+    environment:
+          - NODE_ENV=docker
 
   mongo:
     image: mongo
-#    command: bash -c "mongorestore --drop /backup | wait | mongod"
+#    command: bash -c "mongorestore /backup"
     restart: unless-stopped
     ports:
       - "27017:27017"
     volumes:
      - ./backup-mongo:/backup
+
 
   redis:
     image: redis
